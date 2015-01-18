@@ -12,9 +12,10 @@ paths =
   public:         './public'
   scripts:        './client/coffee'
   vendor:         './vendor'
+  html:           './client/assets/*.html'
+  images:         './client/assets/images/**'
 
 files =
-  html:           './client/assets/index.html'
   app:
     js:           'application.js'
   vendor:
@@ -41,13 +42,16 @@ gulp.task 'vendor', ->
     .pipe concat(files.vendor.js)
     .pipe gulp.dest(paths.public)
 
-gulp.task 'html', ->
-  gulp.src files.html
+gulp.task 'assets', ->
+  gulp.src paths.html
     .pipe gulp.dest(paths.public)
+
+  gulp.src paths.images
+    .pipe gulp.dest(paths.public + "/images")
 
 gulp.task 'watch', ->
   gulp.watch paths.scripts, ['scripts']
   gulp.watch paths.vendor, ['vendor']
-  gulp.watch paths.html, ['html']
+  gulp.watch paths.assets, ['assets']
 
-gulp.task 'default', ['watch', 'html', 'scripts', 'vendor']
+gulp.task 'default', ['watch', 'assets', 'scripts', 'vendor']

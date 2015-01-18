@@ -1,16 +1,17 @@
+Preload = require './preload/load'
+Level = require './level'
+
 class Game
   constructor: ->
+    Preload.start @loadComplete
+
+  loadComplete: =>
+
     @stage = new createjs.Stage 'canvas'
-
-    createjs.Ticker.addEventListener 'tick', @tick
-
-    @circle = new createjs.Shape
-    @circle.graphics.beginFill("red").drawCircle 0, 0, 50
-    @circle.x = @circle.y = 50
-
-    @stage.addChild @circle
+    @level = new Level @, 'level'
 
   tick: (e) =>
     @stage.update()
 
 module.export = new Game()
+
