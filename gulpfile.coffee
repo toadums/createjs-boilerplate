@@ -24,7 +24,7 @@ files =
 args = watchify.args
 args.extensions = ['.coffee']
 
-bundler = watchify(browserify './client/coffee/application.coffee', args)
+bundler = watchify(browserify paths.scripts + '/application.coffee', args)
 bundler.transform 'coffeeify'
 
 bundle = ->
