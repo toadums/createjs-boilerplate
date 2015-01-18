@@ -1,0 +1,19 @@
+{
+  "name": "something",
+  "version": "0.0.1",
+  "main": "public/application.js",
+  "dependencies": {
+    "jquery": "~2.1",
+    "underscore": "~1.6",
+    "EaselJS": "0.8.0",
+    "PreloadJS": "0.6.0"
+  },
+  "overrides": {
+    "underscore": {
+      "main": "underscore.js"
+    }
+  },
+  "resolutions": {
+    "jquery": "~2.1"
+  }
+}
