@@ -1,15 +1,16 @@
 class Game
   constructor: ->
-    @stage = new createjs.Stage "canvas"
-    circle = new createjs.Shape()
+    @stage = new createjs.Stage 'canvas'
 
-    circle.graphics.beginFill('red').drawCircle 0, 0, 40
+    createjs.Ticker.addEventListener 'tick', @tick
 
-    circle.x = circle.y = 40
+    @circle = new createjs.Shape
+    @circle.graphics.beginFill("red").drawCircle 0, 0, 50
+    @circle.x = @circle.y = 50
 
-    @stage.addChild circle
+    @stage.addChild @circle
 
+  tick: (e) =>
     @stage.update()
-
 
 module.export = new Game()
